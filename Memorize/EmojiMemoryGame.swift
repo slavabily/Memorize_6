@@ -9,27 +9,17 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
-    static func createTheme() {
-        
-        let name = ["cars", "faces", "trains", "animals"].randomElement() ?? "cars"
-        
-       theme = Theme(name: name, numberOfPairsOfCards: 100)
-    }
+    static var theme = EmojiTheme(named: "faces")
     
     static func createMemoryGame() -> MemoryGame<String> {
         
-        createTheme()
-        
-        return  MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
-            theme.emojis.shuffled()[pairIndex]
+        return  MemoryGame<String>(numberOfPairsOfCards: theme.themes.first!.numberOfPairsOfCards) { pairIndex in
+            theme.themes.first!.emojis.shuffled()[pairIndex]
         }
-        
     }
     
-    static var theme = Theme(name: "cars", numberOfPairsOfCards: 100)
-    
     var themeColor: Color {
-        switch Self.theme.color {
+        switch Self.theme.themes.first!.color {
         case .red: return Color.red
         case .blue: return Color.blue
         case .green: return Color.green
