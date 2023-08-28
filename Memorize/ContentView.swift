@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("\(EmojiMemoryGame.theme.name)")
+            Text("\(viewModel.theme.name)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             ScrollView {
