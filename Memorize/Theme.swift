@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct Theme {
-    let name: String
+struct Theme: Identifiable {
+    var name: String
     let emojis: [String]
     var numberOfPairsOfCards: Int
     let color: ThemeColor
+    var id: Int
     
-    init(name: String, numberOfPairsOfCards: Int) {
+    init(name: String, numberOfPairsOfCards: Int, id: Int) {
+        self.id = id
         self.name = name
         self.numberOfPairsOfCards = numberOfPairsOfCards
         

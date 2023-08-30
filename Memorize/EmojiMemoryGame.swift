@@ -13,22 +13,33 @@ class EmojiMemoryGame: ObservableObject {
         Theme.Emojis.faces.shuffled()[pairIndex]
     }
     
-    @Published var theme = EmojiTheme(named: "faces")
+    var theme = EmojiTheme()
+    
+    var selectedTheme: Theme?
     
     func createMemoryGame() -> MemoryGame<String> {
-        theme = EmojiTheme(named: "cars")
+        self.selectedTheme = theme.selectTheme(named: "cars")
         
-        return  MemoryGame<String>(numberOfPairsOfCards: theme.themes.first!.numberOfPairsOfCards) { pairIndex in
-            theme.themes.first!.emojis.shuffled()[pairIndex]
+        return  MemoryGame<String>(numberOfPairsOfCards: selectedTheme!.numberOfPairsOfCards) { pairIndex in
+            selectedTheme!.emojis.shuffled()[pairIndex]
         }
     }
     
+    var themeName: String {
+        guard selectedTheme != nil else { return "faces"}
+        return selectedTheme!.name
+    }
+    
     var themeColor: Color {
-        switch theme.themes.first!.color {
-        case .red: return Color.red
-        case .blue: return Color.blue
-        case .green: return Color.green
-        case .yellow: return Color.yellow
+        if selectedTheme != nil {
+            switch selectedTheme!.color {
+            case .red: return Color.red
+            case .blue: return Color.blue
+            case .green: return Color.green
+            case .yellow: return Color.yellow
+            }
+        } else {
+            return Color.yellow
         }
     }
     
