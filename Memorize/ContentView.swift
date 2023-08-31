@@ -11,6 +11,10 @@ struct ContentView: View {
     
     @ObservedObject var viewModel: EmojiMemoryGame
     
+    init(theme: Theme) {
+        self.viewModel = EmojiMemoryGame(theme: theme)
+    }
+    
     var body: some View {
         VStack {
             Text("\(viewModel.themeName)")
@@ -74,10 +78,10 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
+        let theme = Theme(name: "faces", numberOfPairsOfCards: 10, id: 0)
+        ContentView(theme: theme)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
+        ContentView(theme: theme)
             .preferredColorScheme(.light)
     }
 }
