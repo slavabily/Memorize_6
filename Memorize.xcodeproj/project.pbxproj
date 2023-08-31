@@ -16,6 +16,7 @@
 		B9BD363728AAC328005A3C5A /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD363628AAC328005A3C5A /* EmojiMemoryGame.swift */; };
 		B9DA763B28B655620097AD80 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA763A28B655620097AD80 /* Theme.swift */; };
 		B9EB506F2A96376700D985ED /* EmojiTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB506E2A96376700D985ED /* EmojiTheme.swift */; };
+		B9F794AD2AA0B4B100399ECD /* ThemeChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F794AC2AA0B4B100399ECD /* ThemeChooserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		B9BD363628AAC328005A3C5A /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		B9DA763A28B655620097AD80 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B9EB506E2A96376700D985ED /* EmojiTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTheme.swift; sourceTree = "<group>"; };
+		B9F794AC2AA0B4B100399ECD /* ThemeChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				B9B4F66428832F2C00B5A47E /* MemorizeApp.swift */,
 				B9B4F66628832F2C00B5A47E /* ContentView.swift */,
+				B9F794AC2AA0B4B100399ECD /* ThemeChooserView.swift */,
 				B9BD363628AAC328005A3C5A /* EmojiMemoryGame.swift */,
 				B9EB506E2A96376700D985ED /* EmojiTheme.swift */,
 				B92FD90428A96C1900AEFE5E /* MemoryGame.swift */,
@@ -154,6 +157,7 @@
 			files = (
 				B9EB506F2A96376700D985ED /* EmojiTheme.swift in Sources */,
 				B92FD90528A96C1900AEFE5E /* MemoryGame.swift in Sources */,
+				B9F794AD2AA0B4B100399ECD /* ThemeChooserView.swift in Sources */,
 				B9B4F66728832F2C00B5A47E /* ContentView.swift in Sources */,
 				B96447012A9F69A3001798C1 /* UtilityExtensions.swift in Sources */,
 				B9DA763B28B655620097AD80 /* Theme.swift in Sources */,

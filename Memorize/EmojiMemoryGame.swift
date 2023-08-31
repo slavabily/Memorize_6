@@ -13,9 +13,10 @@ class EmojiMemoryGame: ObservableObject {
     
     var theme = EmojiTheme()
     
-    var selectedTheme: Theme?
+    var selectedTheme: Theme
     
     init(theme: Theme) {
+        selectedTheme = theme
         self.model = MemoryGame<String>(numberOfPairsOfCards: 10) { pairIndex in
             theme.emojis.shuffled()[pairIndex]
         }
@@ -24,26 +25,21 @@ class EmojiMemoryGame: ObservableObject {
     func createMemoryGame() -> MemoryGame<String> {
         self.selectedTheme = self.theme.selectTheme(named: "cars")
         
-        return  MemoryGame<String>(numberOfPairsOfCards: selectedTheme!.numberOfPairsOfCards) { pairIndex in
-            selectedTheme!.emojis.shuffled()[pairIndex]
+        return  MemoryGame<String>(numberOfPairsOfCards: selectedTheme.numberOfPairsOfCards) { pairIndex in
+            selectedTheme.emojis.shuffled()[pairIndex]
         }
     }
     
     var themeName: String {
-        guard selectedTheme != nil else { return "faces"}
-        return selectedTheme!.name
+        return selectedTheme.name
     }
     
     var themeColor: Color {
-        if selectedTheme != nil {
-            switch selectedTheme!.color {
-            case .red: return Color.red
-            case .blue: return Color.blue
-            case .green: return Color.green
-            case .yellow: return Color.yellow
-            }
-        } else {
-            return Color.yellow
+        switch selectedTheme.color {
+        case .red: return Color.red
+        case .blue: return Color.blue
+        case .green: return Color.green
+        case .yellow: return Color.yellow
         }
     }
     

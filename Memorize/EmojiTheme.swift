@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-class EmojiTheme {
+class EmojiTheme: ObservableObject {
     
-    var themes = [Theme]()
+   @Published var themes = [Theme]()
     
     init() {
         if themes.isEmpty {
