@@ -13,10 +13,10 @@ class EmojiTheme: ObservableObject {
     
     init() {
         if themes.isEmpty {
-            insertTheme(named: "cars")
-            insertTheme(named: "faces")
-            insertTheme(named: "trains")
-            insertTheme(named: "animals")
+            insertTheme(named: "Cars")
+            insertTheme(named: "Faces")
+            insertTheme(named: "Trains")
+            insertTheme(named: "Animals")
         }
     }
     

@@ -18,12 +18,24 @@ struct ThemeChooserView: View {
                     NavigationLink(destination: ContentView(theme: theme)) {
                         VStack(alignment: .leading) {
                             Text(theme.name)
-                            Text(theme.emojis.joined())
+                                .font(.largeTitle)
+                                .foregroundColor(nameColor(for: theme))
+                            HStack {
+                                Text("\(theme.emojis.count) cards:")
+                                Text(theme.emojis.joined())
+                                    .lineLimit(1)
+                            }
                         }
                     }    
                 }
             }
+            .navigationBarTitle("Theme Chooser")
+            .navigationBarTitleDisplayMode(.automatic)
         }
+    }
+    
+    private func nameColor(for theme: Theme) -> Color {
+        return EmojiMemoryGame(theme: theme).themeColor
     }
 }
 

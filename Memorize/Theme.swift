@@ -26,19 +26,19 @@ struct Theme: Identifiable {
         }
         
         switch name {
-        case "cars":
+        case "Cars":
             color = .red
             emojis = Emojis.cars.shuffled()
             npc(emojisCount: emojis.count)
-        case "faces":
+        case "Faces":
             color = .blue
             emojis = Emojis.faces.shuffled()
             npc(emojisCount: emojis.count)
-        case "trains":
+        case "Trains":
             color = .green
             emojis = Emojis.trains.shuffled()
             npc(emojisCount: emojis.count)
-        case "animals":
+        case "Animals":
             color = .yellow
             emojis = Emojis.animals.shuffled()
             npc(emojisCount: emojis.count)
