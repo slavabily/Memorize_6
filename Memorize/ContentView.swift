@@ -78,9 +78,7 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let theme = Theme(name: "faces", numberOfPairsOfCards: 10, id: 0)
-        ContentView(theme: theme)
-            .preferredColorScheme(.dark)
+        let theme = Theme(name: "Faces", numberOfPairsOfCards: 10, id: 0)
         ContentView(theme: theme)
             .preferredColorScheme(.light)
     }
