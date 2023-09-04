@@ -31,7 +31,17 @@ struct ThemeChooserView: View {
             }
             .navigationBarTitle("Theme Chooser")
             .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarItems(leading: addNewThemeButton)
         }
+    }
+    
+    var addNewThemeButton: some View {
+        Button {
+             // launching ThemeEditor with adding new theme mode active
+        } label: {
+            Image(systemName: "plus")
+        }
+
     }
     
     private func nameColor(for theme: Theme) -> Color {
