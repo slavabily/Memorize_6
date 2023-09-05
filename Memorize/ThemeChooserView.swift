@@ -11,6 +11,8 @@ struct ThemeChooserView: View {
     
     @StateObject var emojiTheme = EmojiTheme()
     
+    @State private var themeToEdit: Theme?
+    
     var body: some View {
         NavigationView {
             List {
@@ -32,12 +34,17 @@ struct ThemeChooserView: View {
             .navigationBarTitle("Theme Chooser")
             .navigationBarTitleDisplayMode(.automatic)
             .navigationBarItems(leading: addNewThemeButton)
+            .popover(item: $themeToEdit) { theme in
+                ThemeEditor(theme: $emojiTheme.themes[theme])
+            }
+            
         }
     }
     
     var addNewThemeButton: some View {
         Button {
              // launching ThemeEditor with adding new theme mode active
+            themeToEdit = emojiTheme.themes.first
         } label: {
             Image(systemName: "plus")
         }

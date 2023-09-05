@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Theme: Identifiable {
+struct Theme: Identifiable, Hashable {
     var name: String
     let emojis: String
     var numberOfPairsOfCards: Int = 10
