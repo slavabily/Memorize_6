@@ -22,7 +22,7 @@ struct ThemeChooserView: View {
                                 .foregroundColor(nameColor(for: theme))
                             HStack {
                                 Text("\(theme.emojis.count) cards:")
-                                Text(theme.emojis.joined())
+                                Text(theme.emojis)
                                     .lineLimit(1)
                             }
                         }

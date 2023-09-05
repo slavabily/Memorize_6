@@ -9,51 +9,16 @@ import Foundation
 
 struct Theme: Identifiable {
     var name: String
-    let emojis: [String]
-    var numberOfPairsOfCards: Int
+    let emojis: String
+    var numberOfPairsOfCards: Int = 10
     let color: ThemeColor
     var id: Int
     
-    init(name: String, numberOfPairsOfCards: Int, id: Int) {
-        self.id = id
+    init(name: String, emojis: String, color: ThemeColor, id: Int) {
         self.name = name
-        self.numberOfPairsOfCards = numberOfPairsOfCards
-        
-        func npc(emojisCount: Int) {
-            if numberOfPairsOfCards > emojisCount {
-                self.numberOfPairsOfCards = emojisCount
-            }
-        }
-        
-        switch name {
-        case "Cars":
-            color = .red
-            emojis = Emojis.cars.shuffled()
-            npc(emojisCount: emojis.count)
-        case "Faces":
-            color = .blue
-            emojis = Emojis.faces.shuffled()
-            npc(emojisCount: emojis.count)
-        case "Trains":
-            color = .green
-            emojis = Emojis.trains.shuffled()
-            npc(emojisCount: emojis.count)
-        case "Animals":
-            color = .yellow
-            emojis = Emojis.animals.shuffled()
-            npc(emojisCount: emojis.count)
-        default:
-            color = .red
-            emojis = Emojis.cars.shuffled()
-            npc(emojisCount: emojis.count)
-        } 
-    }
-    
-    struct Emojis {
-        static let faces = ["😀","🥲","😍","😝","🤩","🙁","😭","🥶","☺️","😘","🤨","😞","😩","😳","🤗"]
-        static let cars = ["🚗", "🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🦯","🦽","🦼","🛴","🚲","🛵","🏍","🛺","🚨","🚔","🚍","🚘","🚖","🚡","🚠","🚟","🚃","🚋"]
-        static let trains = ["🚡","🚠","🚟","🚃","🚋","🚞","🚝","🚄","🚅","🚈","🚂","🚆","🚇","🚊","🚉"]
-        static let animals = ["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐻‍❄️","🐨","🐯","🦁","🐮","🐷","🐽","🐸"]
+        self.emojis = emojis
+        self.id = id
+        self.color = color
     }
     
     enum ThemeColor {

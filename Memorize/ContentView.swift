@@ -47,7 +47,7 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    let card: MemoryGame<String>.Card
+    let card: MemoryGame<Character>.Card
     
     var body: some View {
         ZStack {
@@ -58,7 +58,7 @@ struct CardView: View {
                     .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                 shape
                     .strokeBorder(lineWidth: 3)
-                Text(card.content)
+                Text(String(card.content))
                     .font(.largeTitle)
             } else if card.isMatched {
                 shape.opacity(0)
@@ -78,7 +78,7 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let theme = Theme(name: "Faces", numberOfPairsOfCards: 10, id: 0)
+        let theme = Theme(name: "Preview", emojis: "😃🥹😂🥲😇😘😍🥰", color: .green, id: 0)
         ContentView(theme: theme)
             .preferredColorScheme(.light)
     }

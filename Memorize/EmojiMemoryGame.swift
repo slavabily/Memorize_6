@@ -9,13 +9,13 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
-    @Published var model: MemoryGame<String> 
+    @Published var model: MemoryGame<Character>
     
     var selectedTheme: Theme
     
     init(theme: Theme) {
         selectedTheme = theme
-        self.model = MemoryGame<String>(numberOfPairsOfCards: 10) { pairIndex in
+        self.model = MemoryGame<Character>(numberOfPairsOfCards: 10) { pairIndex in
             theme.emojis.shuffled()[pairIndex]
         }
     }
@@ -33,7 +33,7 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
-    var cards: Array<MemoryGame<String>.Card> {
+    var cards: Array<MemoryGame<Character>.Card> {
         model.cards
     }
     
@@ -43,13 +43,13 @@ class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Intent(s)
     
-    func choose(_ card: MemoryGame<String>.Card) {
+    func choose(_ card: MemoryGame<Character>.Card) {
         model.choose(card)
         print("Score: \(score)")
     }
     
     func createNewGame() {
-        self.model = MemoryGame<String>(numberOfPairsOfCards: 10) { pairIndex in
+        self.model = MemoryGame<Character>(numberOfPairsOfCards: 10) { pairIndex in
             selectedTheme.emojis.shuffled()[pairIndex]
         }
     }

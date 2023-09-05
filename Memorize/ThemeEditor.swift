@@ -18,9 +18,9 @@ struct ThemeEditor: View {
     }
 }
 
-struct ThemeEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeEditor(theme: .constant(Theme(name: "Preview", numberOfPairsOfCards: 10, id: 0)))
-            .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/))
-    }
-}
+//struct ThemeEditor_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ThemeEditor(theme: .constant(Theme(name: "Preview", numberOfPairsOfCards: 10, id: 0)))
+//            .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/))
+//    }
+//}

@@ -13,16 +13,16 @@ class EmojiTheme: ObservableObject {
     
     init() {
         if themes.isEmpty {
-            insertTheme(named: "Cars")
-            insertTheme(named: "Faces")
-            insertTheme(named: "Trains")
-            insertTheme(named: "Animals")
+            insertTheme(named: "Vehicles", emojis: "🚙🚗🚘🚕🚖🏎🚚🛻🚛🚐🚓🚔🚑🚒🚀✈️🛫🛬🛩🚁🛸🚲🏍🛶⛵️🚤🛥🛳⛴🚢🚂🚝🚅🚆🚊🚉🚇🛺🚜", color: .red)
+            insertTheme(named: "Faces", emojis: "😀😃😄😁😆😅😂🤣🥲☺️😊😇🙂🙃😉😌😍🥰😘😗😙😚😋😛😝😜🤪🤨🧐🤓😎🥸🤩🥳😏😞😔😟😕🙁☹️😣😖😫😩🥺😢😭😤😠😡🤯😳🥶😥😓🤗🤔🤭🤫🤥😬🙄😯😧🥱😴🤮😷🤧🤒🤠", color: .green)
+            insertTheme(named: "Weather", emojis: "☀️🌤⛅️🌥☁️🌦🌧⛈🌩🌨❄️💨☔️💧💦🌊☂️🌫🌪", color: .blue)
+            insertTheme(named: "Animals", emojis: "🐥🐣🐂🐄🐎🐖🐏🐑🦙🐐🐓🐁🐀🐒🦆🦅🦉🦇🐢🐍🦎🦖🦕🐅🐆🦓🦍🦧🦣🐘🦛🦏🐪🐫🦒🦘🦬🐃🦙🐐🦌🐕🐩🦮🐈🦤🦢🦩🕊🦝🦨🦡🦫🦦🦥🐿🦔", color: .yellow)
         }
     }
     
-    func insertTheme(named name: String, at index: Int = 0) {
+    func insertTheme(named name: String, emojis: String? = nil, color: Theme.ThemeColor, at index: Int = 0) {
         let unique = (themes.max(by: { $0.id < $1.id })?.id ?? 0) + 1
-        let theme = Theme(name: name, numberOfPairsOfCards: 10, id: unique)
+        let theme = Theme(name: name, emojis: emojis ?? "", color: color, id: unique)
         let safeIndex = min(max(index, 0), themes.count)
         themes.insert(theme, at: safeIndex)
     }
