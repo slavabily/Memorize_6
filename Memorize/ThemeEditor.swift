@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ThemeEditor: View {
     
-    @State var theme: Theme
+    @Binding var theme: Theme
     
     var body: some View {
         Form {
@@ -74,7 +74,7 @@ struct ThemeEditor: View {
 
 struct ThemeEditor_Previews: PreviewProvider {
     static var previews: some View {
-        ThemeEditor(theme: Theme(name: "Preview", emojis: "😀😃😄😁😆🥹😅😂🤣🥲☺️😊😇🙂🙃😉😌", color: .blue, id: 0))
+        ThemeEditor(theme: .constant(Theme(name: "Preview", emojis: "😀😃😄😁😆🥹😅😂🤣🥲☺️😊😇🙂🙃😉😌", color: .blue, id: 0)))
             .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/))
     }
 }
