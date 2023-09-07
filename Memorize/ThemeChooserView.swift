@@ -11,7 +11,7 @@ struct ThemeChooserView: View {
     
     @StateObject var emojiTheme = EmojiTheme()
     
-    @State private var themeToEdit: Theme?
+    @State private var presentThemeEditor = false
     
     var body: some View {
         NavigationView {
@@ -34,8 +34,8 @@ struct ThemeChooserView: View {
             .navigationBarTitle("Theme Chooser")
             .navigationBarTitleDisplayMode(.automatic)
             .navigationBarItems(leading: addNewThemeButton)
-            .popover(item: $themeToEdit) { theme in
-                ThemeEditor(theme: $emojiTheme.themes[theme])
+            .popover(isPresented: $presentThemeEditor) {
+                ThemeEditor(theme: Theme(name: "New", emojis: "", color: .blue, id: 0))
             }
             
         }
@@ -43,8 +43,7 @@ struct ThemeChooserView: View {
     
     var addNewThemeButton: some View {
         Button {
-             // launching ThemeEditor with adding new theme mode active
-            themeToEdit = emojiTheme.themes.first
+            presentThemeEditor.toggle()
         } label: {
             Image(systemName: "plus")
         }

@@ -9,7 +9,7 @@ import Foundation
 
 struct Theme: Identifiable, Hashable {
     var name: String
-    let emojis: String
+    var emojis: String
     var numberOfPairsOfCards: Int = 10
     let color: ThemeColor
     var id: Int
