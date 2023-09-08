@@ -15,12 +15,8 @@ class EmojiMemoryGame: ObservableObject {
     
     init(theme: Theme) {
         selectedTheme = theme
-        self.model = MemoryGame<Character>(numberOfPairsOfCards: 10) { pairIndex in
-            if theme.emojis.count > pairIndex {
-                return theme.emojis.shuffled()[pairIndex]
-            } else {
-                return Character(" ")
-            }
+        self.model = MemoryGame<Character>(numberOfPairsOfCards: theme.emojis.count) { pairIndex in
+            theme.emojis.shuffled()[pairIndex]
         }
     }
     
@@ -53,7 +49,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func createNewGame() {
-        self.model = MemoryGame<Character>(numberOfPairsOfCards: 10) { pairIndex in
+        self.model = MemoryGame<Character>(numberOfPairsOfCards: selectedTheme.emojis.count) { pairIndex in
             selectedTheme.emojis.shuffled()[pairIndex]
         }
     }
