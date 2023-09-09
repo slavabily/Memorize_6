@@ -14,6 +14,7 @@ struct ThemeEditor: View {
     var body: some View {
         Form {
             nameSection
+            colorChoosingSection
             addEmojisSection
             removeEmojiSection
         }
@@ -57,13 +58,30 @@ struct ThemeEditor: View {
                         .onTapGesture {
                             withAnimation {
                                 theme.emojis.removeAll(where: { String($0) == emoji })
+                                emojisToAdd.removeAll(where: { String($0) == emoji })
                             }
                         }
                 }
             }
             .font(.system(size: 40))
         }
-    } 
+    }
+    
+    var colors: [Theme.ThemeColor] = [.blue, .green, .red, .yellow]
+    
+    var colorChoosingSection: some View {
+        Section {
+            Picker(selection: $theme.color) {
+                ForEach(colors, id: \.self) {
+                    Text(String(describing: $0))
+                }
+            } label: {
+                 
+            }.pickerStyle(.segmented)
+        } header: {
+            Text("Choose Color")
+        }
+    }
 }
 
 

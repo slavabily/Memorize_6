@@ -11,7 +11,7 @@ struct Theme: Identifiable, Hashable {
     var name: String
     var emojis: String
     var numberOfPairsOfCards: Int = 10
-    let color: ThemeColor
+    var color: ThemeColor
     var id: Int
     
     init(name: String, emojis: String, color: ThemeColor, id: Int) {
