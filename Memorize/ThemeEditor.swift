@@ -9,15 +9,27 @@ import SwiftUI
 
 struct ThemeEditor: View {
     
+    @Environment(\.dismiss) var disniss
+    
     @Binding var theme: Theme
     
     var body: some View {
-        Form {
-            nameSection
-            colorChoosingSection
-            addEmojisSection
-            removeEmojiSection
-        }
+        NavigationView {
+            Form {
+                nameSection
+                colorChoosingSection
+                addEmojisSection
+                removeEmojiSection
+            }
+            .interactiveDismissDisabled()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Close") {
+                         disniss()
+                    }
+                }
+            }
+        }  
     }
     
     var nameSection: some View {
