@@ -13,6 +13,8 @@ struct ThemeChooserView: View {
     
     @State private var themeToEdit: Theme?
     
+    @State private var editMode: EditMode = .inactive
+    
     var body: some View {
         NavigationView {
             List {
@@ -28,15 +30,36 @@ struct ThemeChooserView: View {
                                     .lineLimit(1)
                             }
                         }
+                        .gesture(editMode == .active ? tap(for: theme) : nil)
                     }    
+                }
+                .onDelete { indexSet in
+                    emojiTheme.themes.remove(atOffsets: indexSet)
+                }
+                .onMove { indexSet, newOffset in
+                    emojiTheme.themes.move(fromOffsets: indexSet, toOffset: newOffset)
                 }
             }
             .navigationBarTitle("Theme Chooser")
             .navigationBarTitleDisplayMode(.automatic)
-            .navigationBarItems(leading: addNewThemeButton)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    addNewThemeButton
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
+            .environment(\.editMode, $editMode)
             .popover(item: $themeToEdit) { theme in
                 ThemeEditor(theme: $emojiTheme.themes[theme])
             }
+        }
+    }
+    
+    private func tap(for theme: Theme) -> some Gesture {
+        TapGesture().onEnded {
+            themeToEdit = theme
         }
     }
     
