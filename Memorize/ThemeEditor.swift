@@ -17,6 +17,7 @@ struct ThemeEditor: View {
         NavigationView {
             Form {
                 nameSection
+                cardsQuantitySection
                 colorChoosingSection
                 addEmojisSection
                 removeEmojiSection
@@ -36,6 +37,23 @@ struct ThemeEditor: View {
         Section(header: Text("Name")) {
             TextField("Name", text: $theme.name)
         }
+    }
+    
+    @State private var numderOfCards = ""
+    
+    var cardsQuantitySection: some View {
+        Section(header: Text("Quantity of cards")) {
+            TextField("even number", text: $numderOfCards)
+                .onChange(of: numderOfCards) { noc in
+                    theme.numberOfPairsOfCards = numberOfCards(inString: noc) / 2
+                }
+                .keyboardType(.numberPad)
+        }
+    }
+    
+    private func numberOfCards(inString: String) -> Int {
+        let numberOfCardsInInt = Int(inString) ?? 0
+        return numberOfCardsInInt < theme.emojis.count ? numberOfCardsInInt : theme.emojis.count
     }
     
     @State private var emojisToAdd = ""

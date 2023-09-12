@@ -15,7 +15,7 @@ class EmojiMemoryGame: ObservableObject {
     
     init(theme: Theme) {
         selectedTheme = theme
-        self.model = MemoryGame<Character>(numberOfPairsOfCards: theme.emojis.count) { pairIndex in
+        self.model = MemoryGame<Character>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
             theme.emojis.shuffled()[pairIndex]
         }
     }

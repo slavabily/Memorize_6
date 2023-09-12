@@ -10,7 +10,7 @@ import Foundation
 struct Theme: Identifiable, Hashable {
     var name: String
     var emojis: String
-    var numberOfPairsOfCards: Int = 10
+    var numberOfPairsOfCards: Int
     var color: ThemeColor
     var id: Int
     
@@ -19,6 +19,7 @@ struct Theme: Identifiable, Hashable {
         self.emojis = emojis
         self.id = id
         self.color = color
+        self.numberOfPairsOfCards = emojis.count > 10 ? 10 : emojis.count
     }
     
     enum ThemeColor {
