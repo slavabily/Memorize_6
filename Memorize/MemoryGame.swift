@@ -8,7 +8,7 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    private(set) var cards: Array<Card>
+    var cards: Array<Card>
     
     private(set) var alreadyBeenSeenCards: Array<Card>
     private(set) var mismatchedCards: Array<Card>
