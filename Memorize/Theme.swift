@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Theme: Identifiable, Hashable {
+struct Theme: Identifiable, Hashable, Codable {
     var name: String
     var emojis: String
     var numberOfPairsOfCards: Int
@@ -22,7 +22,7 @@ struct Theme: Identifiable, Hashable {
         self.numberOfPairsOfCards = emojis.count > 10 ? 10 : emojis.count
     }
     
-    enum ThemeColor {
+    enum ThemeColor: Codable {
         case red
         case green
         case blue

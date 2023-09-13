@@ -9,9 +9,25 @@ import SwiftUI
 
 class EmojiTheme: ObservableObject {
     
-   @Published var themes = [Theme]()
+    @Published var themes = [Theme]() {
+        didSet {
+            storeInUserDefaults()
+        }
+    }
+    
+    private func storeInUserDefaults() {
+        UserDefaults.standard.set(try? JSONEncoder().encode(themes), forKey: "Themes")
+    }
+    
+    private func restoreFromUserDefaults() {
+        if let jsonData = UserDefaults.standard.data(forKey: "Themes"),
+           let decodedThemes = try? JSONDecoder().decode([Theme].self, from: jsonData) {
+            themes = decodedThemes
+        }
+    }
     
     init() {
+        restoreFromUserDefaults()
         if themes.isEmpty {
             insertTheme(named: "Vehicles", emojis: "🚙🚗🚘🚕🚖🏎🚚🛻🚛🚐🚓🚔🚑🚒🚀✈️🛫🛬🛩🚁🛸🚲🏍🛶", color: .red)
             insertTheme(named: "Faces", emojis: "😀😃😄😁😆😅😂🤣🥲☺️😊😇🙂🙃😉😌😍🥰😘😗😙😚😋😛😝😜🤪🤨🧐🤓😎", color: .green)
