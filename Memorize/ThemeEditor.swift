@@ -42,12 +42,17 @@ struct ThemeEditor: View {
     @State private var numderOfCards = ""
     
     var cardsQuantitySection: some View {
-        Section(header: Text("Quantity of cards")) {
+        Section {
             TextField("even number", text: $numderOfCards)
                 .onChange(of: numderOfCards) { noc in
                     theme.numberOfPairsOfCards = numberOfCards(inString: noc) / 2
+                    print("theme.numberOfPairsOfCards: \(theme.numberOfPairsOfCards)")
                 }
                 .keyboardType(.numberPad)
+        } header: {
+            Text("Quantity of cards")
+        } footer: {
+            Text("Please, add some emojis before adding cards quantity")
         }
     }
     

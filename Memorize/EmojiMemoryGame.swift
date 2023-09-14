@@ -16,7 +16,8 @@ class EmojiMemoryGame: ObservableObject {
     init(theme: Theme) {
         selectedTheme = theme
         let arrayOfEmojis = theme.emojis.compactMap { $0 }
-        self.model = MemoryGame<Character>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
+        let numberPairsOfCards = theme.numberOfPairsOfCards < arrayOfEmojis.count ? theme.numberOfPairsOfCards : arrayOfEmojis.count
+        self.model = MemoryGame<Character>(numberOfPairsOfCards: numberPairsOfCards) { pairIndex in
             arrayOfEmojis[pairIndex]
         }
         model.cards.shuffle()

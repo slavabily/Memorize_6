@@ -25,7 +25,7 @@ struct ThemeChooserView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(nameColor(for: theme))
                             HStack {
-                                Text("\(theme.numberOfPairsOfCards * 2) cards:")
+                                Text("\(cardsQuantity(for: theme)) cards:")
                                 Text(theme.emojis)
                                     .lineLimit(1)
                             }
@@ -57,6 +57,10 @@ struct ThemeChooserView: View {
         }
     }
     
+    private func cardsQuantity(for theme: Theme) -> Int {
+        theme.numberOfPairsOfCards < theme.emojis.count ? theme.numberOfPairsOfCards * 2 : theme.emojis.count * 2
+    }
+    
     private func tap(for theme: Theme) -> some Gesture {
         TapGesture().onEnded {
             themeToEdit = theme
@@ -65,7 +69,7 @@ struct ThemeChooserView: View {
     
     var addNewThemeButton: some View {
         Button {
-            emojiTheme.insertTheme(named: "New", color: .blue, at: 0)
+            emojiTheme.insertTheme(named: "New", emojis: "😀😁😅🥲😇😉🥰", color: .blue, at: 0)
             themeToEdit = emojiTheme.themes.first
         } label: {
             Image(systemName: "plus")
