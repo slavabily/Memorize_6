@@ -22,6 +22,7 @@ struct ThemeEditor: View {
                 addEmojisSection
                 removeEmojiSection
             }
+            .frame(minWidth: 300, minHeight: 350)
             .interactiveDismissDisabled()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -128,6 +129,7 @@ struct ThemeEditor: View {
 struct ThemeEditor_Previews: PreviewProvider {
     static var previews: some View {
         ThemeEditor(theme: .constant(Theme(name: "Preview", emojis: "😀😃😄😁😆🥹😅😂🤣🥲☺️😊😇🙂🙃😉😌", color: .blue, id: 0)))
-            .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/))
+            .previewLayout(.sizeThatFits)
+            
     }
 }

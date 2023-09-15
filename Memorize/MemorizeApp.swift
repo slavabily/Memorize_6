@@ -12,7 +12,13 @@ struct MemorizeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ThemeChooserView()
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                Text("Emoji Memory Game")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.red)
+            }
+            ThemeChooserView() 
         }
     }
 }

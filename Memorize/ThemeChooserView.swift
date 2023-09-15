@@ -19,7 +19,7 @@ struct ThemeChooserView: View {
         NavigationView {
             List {
                 ForEach(emojiTheme.themes) { theme in
-                    NavigationLink(destination: ContentView(theme: theme)) {
+                    NavigationLink(destination: GameView(theme: theme)) {
                         VStack(alignment: .leading) {
                             Text(theme.name)
                                 .font(.largeTitle)
@@ -51,7 +51,7 @@ struct ThemeChooserView: View {
                 }
             }
             .environment(\.editMode, $editMode)
-            .popover(item: $themeToEdit) { theme in
+            .sheet(item: $themeToEdit) { theme in
                 ThemeEditor(theme: $emojiTheme.themes[theme])
             }
         }

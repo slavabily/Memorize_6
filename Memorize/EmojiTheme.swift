@@ -42,11 +42,4 @@ class EmojiTheme: ObservableObject {
         let safeIndex = min(max(index, 0), themes.count)
         themes.insert(theme, at: safeIndex)
     }
-    
-    func selectTheme(named name: String) -> Theme {
-        let theme = themes.first(where: {$0.name == name})!
-        return theme
-    }
-    
-    
 }

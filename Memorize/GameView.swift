@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  GameView.swift
 //  Memorize
 //
 //  Created by slava bily on 16.07.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct GameView: View {
     
     @ObservedObject var viewModel: EmojiMemoryGame
     
@@ -79,7 +79,7 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let theme = Theme(name: "Preview", emojis: "😃🥹😂🥲😇😘😍🥰", color: .green, id: 0)
-        ContentView(theme: theme)
+        GameView(theme: theme)
             .preferredColorScheme(.light)
     }
 }
