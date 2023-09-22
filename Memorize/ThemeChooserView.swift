@@ -55,6 +55,7 @@ struct ThemeChooserView: View {
                 ThemeEditor(theme: $emojiTheme.themes[theme])
             }
         }
+        .navigationViewStyle(.stack)
     }
     
     private func cardsQuantity(for theme: Theme) -> Int {
